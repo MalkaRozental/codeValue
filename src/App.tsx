@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-import logo from "./logo.svg";
+import { Box, Container, Stack } from "@mui/material";
 import "./App.css";
 import { ProductList } from "./components/productsList/ProductList";
 import { ProductAddEdit } from "./components/ProductAddEdit";
-import { ProductProvider, useProduct } from "./components/ProductProvider";
-import { Box, Container, Stack } from "@mui/material";
+import { useProduct } from "./components/ProductProvider";
 import { Header } from "./components/header/Header";
 
 function App() {

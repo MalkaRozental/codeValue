@@ -1,4 +1,4 @@
-import { FormControl, TextField, InputAdornment } from "@mui/material";
+import { FormControl, TextField } from "@mui/material";
 import { useProduct } from "../ProductProvider";
 
 export const Search = () => {

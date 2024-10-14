@@ -1,11 +1,11 @@
 import Box from "@mui/material/Box";
 import { useSelector } from "react-redux";
-import { ProductItem } from "./ProductItem";
-import { RootState } from "../../redux/store";
+import Fuse from "fuse.js";
 import { useEffect, useState } from "react";
+import { RootState } from "../../redux/store";
 import { Product } from "../../type";
 import { useProduct } from "../ProductProvider";
-import Fuse from "fuse.js";
+import { ProductItem } from "./ProductItem";
 
 export const ProductList = () => {
   const stateProducts = useSelector(
@@ -21,14 +21,13 @@ export const ProductList = () => {
   useEffect(() => {
     if (query !== "") {
       const filterResult = fuse.search(query).map((item) => item.item);
-
       setProducts(filterResult);
     }
   }, [query]);
   return (
     <Box sx={{ flexGrow: 1, overflow: "hidden", px: 3 }}>
       {products.map((product) => (
-        <ProductItem key={`productItem-${product.name}`} product={product} />
+        <ProductItem key={`productItem-${product.id}`} product={product} />
       ))}
     </Box>
   );
