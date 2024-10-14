@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { ProductList } from "./components/productsList/ProductList";
+import { ProductAddEdit } from "./components/ProductAddEdit";
+import { ProductProvider, useProduct } from "./components/ProductProvider";
+import { Box, Container, Stack } from "@mui/material";
+import { Header } from "./components/header/Header";
 
 function App() {
+  const { addNewProduct, selectedProduct } = useProduct();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Container fixed>
+      <Box sx={{ height: "100vh" }}>
+        <Header />
+        <Stack
+          spacing={2}
+          direction="row"
+          sx={{ alignItems: "center", justifyContent: "space-between" }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <ProductList />
+          {(addNewProduct || selectedProduct) && <ProductAddEdit />}
+        </Stack>
+      </Box>
+    </Container>
   );
 }
 
