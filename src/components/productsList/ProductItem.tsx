@@ -10,12 +10,19 @@ export const ProductItem = ({ product }: { product: Product }) => {
 
   const { setSelectedProduct } = useProduct();
 
-  const handleDeleteProduct = () => {
+  const handleDeleteProduct = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     dispatch(deleteProduct({ productId: product.id }));
   };
 
   return (
-    <Item key={product.id} sx={{ my: 1, mx: "auto", p: 2 }}>
+    <Item
+      key={product.id}
+      sx={{ my: 1, mx: "auto", p: 2 }}
+      onClick={() => {
+        setSelectedProduct(product);
+      }}
+    >
       <Stack
         spacing={2}
         direction="row"
@@ -24,12 +31,7 @@ export const ProductItem = ({ product }: { product: Product }) => {
         <Stack>
           <img style={{ height: 80 }} src="/codeValue.png" alt="image" />
         </Stack>
-        <Stack
-          onClick={() => {
-            setSelectedProduct(product);
-          }}
-          sx={{ minWidth: 0, cursor: "pointer" }}
-        >
+        <Stack sx={{ minWidth: 0, cursor: "pointer" }}>
           <Typography noWrap>{product.name}</Typography>
           <Typography noWrap>{product.description}</Typography>
         </Stack>

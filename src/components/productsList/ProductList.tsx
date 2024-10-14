@@ -22,9 +22,11 @@ export const ProductList = () => {
     if (query !== "") {
       const filterResult = fuse.search(query).map((item) => item.item);
       setProducts(filterResult);
+    } else {
+      setProducts(stateProducts);
     }
-    setProducts(stateProducts);
   }, [query, stateProducts]);
+
   return (
     <Box sx={{ flexGrow: 1, overflow: "hidden", px: 3 }}>
       {products.map((product) => (
