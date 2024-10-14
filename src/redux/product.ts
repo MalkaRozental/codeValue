@@ -43,7 +43,7 @@ export const productSlice = createSlice({
   reducers: {
     addProduct: (state, { payload: { name, description, price } }) => {
       state.products.push({
-        id: state.products[state.products.length].id + 1,
+        id: state.products[state.products.length - 1].id + 1,
         name,
         description,
         price,

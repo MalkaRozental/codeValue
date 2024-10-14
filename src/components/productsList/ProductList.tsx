@@ -23,7 +23,8 @@ export const ProductList = () => {
       const filterResult = fuse.search(query).map((item) => item.item);
       setProducts(filterResult);
     }
-  }, [query]);
+    setProducts(stateProducts);
+  }, [query, stateProducts]);
   return (
     <Box sx={{ flexGrow: 1, overflow: "hidden", px: 3 }}>
       {products.map((product) => (
